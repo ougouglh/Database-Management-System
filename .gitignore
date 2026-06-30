@@ -1,0 +1,109 @@
+# ====================
+# 敏感配置文件（不要提交）
+# ====================
+config.yaml
+.env
+*.key
+*.pem
+*.secret
+
+# ====================
+# 业务数据文件
+# ====================
+# 根目录数据文件
+*.csv
+*.xlsx
+*.xls
+# 但保留文档用的模板
+!README*.md
+!docs/*.md
+
+# ====================
+# Python
+# ====================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+ENV/
+env/
+
+# ====================
+# Vue / Node
+# ====================
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# ====================
+# 导出文件
+# ====================
+static/exports/*.xlsx
+static/exports/*.csv
+
+# ====================
+# 日志
+# ====================
+logs/
+*.log
+*.log.*
+
+# ====================
+# 数据文件
+# ====================
+data/*.xlsx
+data/*.xls
+data/*.csv
+!data/.gitkeep
+
+# ====================
+# 临时脚本和文档
+# ====================
+import_batch_csv.py
+count_existing_barcodes.py
+内网*.md
+data_tools_spec.md
+README_系统部署.md
+
+# ====================
+# IDE
+# ====================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+# 但保留 .vscode 推荐配置（可选）
+!.vscode/extensions.json
+!.vscode/launch.json
+
+# ====================
+# 系统文件
+# ====================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ====================
+# Claude 相关
+# ====================
+.claude/session_*/
+.omc/sessions/
+*.output

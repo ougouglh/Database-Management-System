@@ -1,0 +1,57 @@
+# 配置文件模板
+# 部署时请复制此文件为 config.yaml，并填写真实配置值
+
+# MySQL 数据库配置
+mysql1:
+  host: your_database_host
+  port: 3306
+  user: your_database_user
+  password: your_database_password
+  database: your_database_name
+  charset: utf8mb4
+  pool_size: 10
+  max_overflow: 20
+  timeout: 30
+
+# 目标表配置 - 整个系统只操作这一张表
+target_table: your_target_table_name
+
+# 多阶段表映射 - 5 阶段可分别指向不同表（预留扩展点）
+# 默认所有阶段都指向同一张表，行为与 target_table 完全一致。
+# 未来某阶段要使用独立表时，仅需修改对应 stage 的表名，无需改业务代码。
+target_tables:
+  1: your_target_table_name  # 阶段1 - 品类定义
+  2: your_target_table_name  # 阶段2 - 分类处理
+  3: your_target_table_name  # 阶段3 - 第三方校验
+  4: your_target_table_name  # 阶段4 - Mapping管理
+  5: your_target_table_name  # 阶段5 - 最终版本
+
+# MySQL 数据库配置（可选，如需要第二个数据库）
+mysql2:
+  host: your_database_host
+  port: 3306
+  user: your_database_user
+  password: your_database_password
+  database: your_second_database_name
+  charset: utf8mb4
+  pool_size: 10
+  max_overflow: 20
+  timeout: 30
+
+# JWT 认证配置
+auth:
+  # JWT 密钥生成方法：运行 python generate_key.py
+  # 或者使用 Python 代码：python -c "import secrets; print(secrets.token_urlsafe(32))"
+  secret_key: "RUN_PYTHON_GENERATE_KEY_PY_TO_GENERATE"
+  algorithm: "HS256"
+  access_token_expire_minutes: 480
+  session_expire_hours: 24
+
+# 文件上传限制
+upload:
+  max_file_size_mb: 50
+
+# 导出配置
+export:
+  max_rows: 100000
+  file_retention_days: 7
